@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Servidor</title>
+	<link rel="stylesheet" type="text/css" href="css/adminx.css" rel="stylesheet" />
+	<script src="js/jquery-3.3.1.js"></script>
+	<script src="js/adminx.js"></script>
+	<script src="js/vendor.js"></script>
+<head>
+<body style="text-align:center;">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="alert alert-dark" role="alert"><span>SERVIDOR</span></h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4" style="padding-right:35px;">			
+			<button class="btn btn-primary btn-lg btn-block" id="ligar">
+				<div class="col-xs-12 text-center">
+					<span class="btn-text" style="font-size:40px;">LIGAR</span>                     
+				</div>	
+			</button>
+			</br>
+			<button class="btn btn-danger btn-lg btn-block" id="desligar">
+				<div class="col-xs-12 text-center">
+                    <span class="btn-text" style="font-size:40px;">DESLIGAR</span> 
+                </div>
+			</button>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+	<script>
+		var url = "http://localhost:8080?status=";
+				
+				
+		// Acessa os botões e passando as nossas diretivas de ligar ou desligar o led 
+	    var led = function() {
+	    	
+			$("#ligar").on('click', function(){
+				$.get(url + 'led5_on', function(data, status){
+						alert("Data: " + data + "\nStatus: " + status);
+				});
+			});
+			
+			$("#desligar").on('click', function(){
+				$.get(url + 'led5_off', function(data, status){
+					alert("Data: " + data + "\nStatus: " + status);
+				});
+			});
+	    }
+		
+		window.onload = function() {
+	    	// Chama a função led
+	    	led();
+	    }
+	</script>
+</body>
+</html>
